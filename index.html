@@ -1,24 +1,7 @@
-<html>
-  <head>
-    <title>Metabase Dashboard</title>
-  </head>
-  <body>
-    <script>
-      fetch("https://lijunio.github.io/Glpi/") // Substitua pelo URL do seu servidor Node.js
-        .then(response => response.text())
-        .then(token => {
-          const iframeSrc = `https://adm.telessaude.hc.ufmg.br/embed/dashboard/144?jwt=${token}#theme=night&bordered=true&titled=true`;
-
-          const iframe = document.createElement("iframe");
-          iframe.src = iframeSrc;
-          iframe.frameBorder = 0;
-          iframe.width = 800;
-          iframe.height = 600;
-          iframe.allowtransparency = true;
-
-          document.body.appendChild(iframe);
-        })
-        .catch(error => console.error('Erro na solicitação ao servidor Node.js:', error));
-    </script>
-  </body>
-</html>
+<iframe
+    src="{{iframeUrl}}"
+    frameborder="0"
+    width="800"
+    height="600"
+    allowtransparency
+></iframe>
