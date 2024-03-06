@@ -15,6 +15,8 @@ app.get("/", (req, res) => {
 
   const token = jwt.sign(payload, METABASE_SECRET_KEY);
 
+  console.log("Token gerado:", token); // Adicione esta linha para exibir o token no console do servidor Node.js
+
   res.send(token);
 });
 
