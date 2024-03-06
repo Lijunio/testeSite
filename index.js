@@ -10,24 +10,12 @@ app.get("/", (req, res) => {
   const payload = {
     resource: { dashboard: 144 },
     params: {},
-    exp: Math.round(Date.now() / 1000) + 600 // 10 minute expiration
+    exp: Math.round(Date.now() / 1000) + (10 * 60) // 10-minute expiration
   };
 
   const token = jwt.sign(payload, METABASE_SECRET_KEY);
-  const iframeUrl = METABASE_SITE_URL + "/embed/dashboard/" + token + "#bordered=true&titled=true";
 
-  const html = `
-    <html>
-      <head>
-        <title>Metabase Dashboard</title>
-      </head>
-      <body>
-        <iframe src="${iframeUrl}" frameborder="0" width="800" height="600" allowtransparency></iframe>
-      </body>
-    </html>
-  `;
-
-  res.send(html);
+  res.send(token);
 });
 
 const PORT = process.env.PORT || 3000;
