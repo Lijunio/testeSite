@@ -4,31 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Metabase Dashboard</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            background-color: black; /* Cor de fundo preto */
-        }
-
-        #iframeContainer {
-            width: 100%;
-            height: 100vh; /* 100% da altura da viewport */
-        }
-
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-    </style>
 </head>
 <body>
 
-<div id="iframeContainer">
-    <iframe src="https://adm.telessaude.hc.ufmg.br/public/dashboard/088beead-2b9f-4206-8cd6-d15ff5879df4" allowtransparency></iframe>
-</div>
+<iframe
+    src="https://adm.telessaude.hc.ufmg.br/public/dashboard/088beead-2b9f-4206-8cd6-d15ff5879df4"
+    frameborder="0"
+    width="100%" <!-- Agora é 100% da largura disponível -->
+    height="100vh" <!-- 100% da altura da viewport -->
+    allowtransparency
+></iframe>
 
 </body>
 </html>
