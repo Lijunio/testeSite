@@ -3,17 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Metabase Glpi</title>
+    <title>Metabase Dashboard</title>
 </head>
 <body>
 
 <iframe
+    id="metabaseIframe"
     src="https://adm.telessaude.hc.ufmg.br/public/dashboard/088beead-2b9f-4206-8cd6-d15ff5879df4"
     frameborder="0"
-    width="100%" <!-- Agora é 100% da largura disponível -->
-    height="100vh" <!-- 100% da altura da viewport -->
+    width="100%"
+    height="600" <!-- Altura inicial, será ajustada dinamicamente -->
     allowtransparency
 ></iframe>
+
+<script>
+    function ajustarAlturaIframe() {
+        var iframe = document.getElementById('metabaseIframe');
+        var windowHeight = window.innerHeight;
+
+        iframe.style.height = windowHeight + 'px';
+    }
+
+    // Ajustar altura inicial e escutar por mudanças na janela
+    ajustarAlturaIframe();
+    window.addEventListener('resize', ajustarAlturaIframe);
+</script>
 
 </body>
 </html>
