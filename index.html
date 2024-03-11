@@ -3,31 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Metabase Glpi</title>
-</head>
-<body>
+    <title>Blip Chat Test</title>
 
-<iframe
-    id="metabaseIframe"
-    src="https://adm.telessaude.hc.ufmg.br/public/dashboard/088beead-2b9f-4206-8cd6-d15ff5879df4"
-    frameborder="0"
-    width="100%"
-    height="600" <!-- Altura inicial, será ajustada dinamicamente -->
-    allowtransparency
-></iframe>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden; /* Removendo a barra de rolagem */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-<script>
-    function ajustarAlturaIframe() {
-        var iframe = document.getElementById('metabaseIframe');
-        var windowHeight = window.innerHeight;
+        header {
+            padding: 20px;
+            background-color: #708e94; /* Cor de fundo para o cabeçalho */
+            color: #fff;
+            text-align: center;
+            width: 100%;
+            position: fixed;
+            top: 0;
+        }
 
-        iframe.style.height = windowHeight + 'px';
+        .image-container {
+            flex: 1;
+            position: relative;
+            text-align: center; /* Centralizando a imagem horizontalmente */
+            overflow: hidden; /* Removendo barra de rolagem */
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100vh;
+            object-fit: cover;
+            display: block;
+        }
+
+        #blip-chat-open-iframe {
+            bottom: 0 !important;
+            top: auto !important;
+            animation: shake 1s infinite; /* Adiciona a animação ao botão */
+            position: relative; /* Adiciona posição relativa para o posicionamento absoluto da mensagem */
+        }
+
+        #blip-chat-open-iframe::before {
+    content: "Olá!\AMe chamo Eliza, como posso te ajudar?";
+    position: absolute;
+    display: block;
+    top: -50px;
+    left: -100px;
+    padding: 6px;
+    background-color: #c5d9fb;
+    color: #3d3d3d;
+    border-radius: 0.8125em 0.8125em 0.125em 0.8125em;
+    white-space: pre-line; /* Mantém a quebra de linha */
+    transform: translateX(-50%);
+    width: 200px; /* Ajuste a largura conforme necessário */
     }
 
-    // Ajustar altura inicial e escutar por mudanças na janela
-    ajustarAlturaIframe();
-    window.addEventListener('resize', ajustarAlturaIframe);
-</script>
+        .blip-chat-clicked::before {
+             display: none !important; /* Oculta o balão da mensagem quando o botão é clicado */
+        }
 
+        @keyframes shake {
+            0%, 100% {
+                transform: translateX(0);
+            }
+            50% {
+                transform: translateX(-10px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="image-container">
+        <img src="https://raw.githubusercontent.com/Lijunio/blip-chat-test/main/site.png" alt="Imagem de fundo">
+    </div>
+
+    <!-- Adicione o script do Blip Chat aqui  -->
+<script src="https://unpkg.com/blip-chat-widget" type="text/javascript"></script>
+<script>
+    (function () {
+        window.onload = function () {
+            new BlipChat()
+                .withAppKey('dGVsZXNzYXVkZTE6MGRkYmRhY2MtMjU4Ny00YjIwLTk2OTItMmVmYjhjOTU4M2Yx')
+                .withButton({"color":"#0096fa","icon":"https://blipmediastore.blip.ai/public-medias/Media_b7363a65-a04c-4812-9f82-47e602e8bccb"})
+                .withCustomCommonUrl('https://elias-junio-bqqie.chat.blip.ai/')
+                .build();
+                    });
+                })
+                .build();
+
+            // Adiciona a classe 'blip-chat-clicked' ao botão quando o botão é clicado
+            document.getElementById('blip-chat-open-iframe').addEventListener('click', function () {
+                document.getElementById('blip-chat-open-iframe').classList.add('blip-chat-clicked');
+            });
+        }
+    })();
+</script>
 </body>
 </html>
